@@ -80,7 +80,7 @@ export function SkyReading({ entry, onNewSky }: SkyReadingProps) {
       <div
         ref={cardRef}
         className="flex overflow-hidden bg-white"
-        style={{ border: '0.5px solid rgba(28,28,30,0.12)', borderRadius: 3 }}
+        style={{ borderRadius: 3, overflow: 'hidden' }}
       >
         <div className="relative" style={{ flex: '0 0 62%', background: '#111' }}>
           <img
