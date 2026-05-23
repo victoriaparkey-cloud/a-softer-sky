@@ -47,11 +47,21 @@ export function SkyReading({ entry, onNewSky }: SkyReadingProps) {
         backgroundColor: '#ffffff',
         logging: false,
       })
-      const link = document.createElement('a')
-      const slug = (location || 'sky').replace(/\s+/g, '-').toLowerCase()
-      link.download = slug + '-a-softer-sky.jpg'
-      link.href = canvas.toDataURL('image/jpeg', 0.93)
-      link.click()
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.93)
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+      if (isMobile) {
+        const win = window.open()
+        if (win) {
+          win.document.write('<img src="' + dataUrl + '" style="width:100%;max-width:100%">')
+          win.document.title = 'long press to save'
+        }
+      } else {
+        const link = document.createElement('a')
+        const slug = (location || 'sky').replace(/\s+/g, '-').toLowerCase()
+        link.download = slug + '-a-softer-sky.jpg'
+        link.href = dataUrl
+        link.click()
+      }
     } catch {
       alert('Download failed — try right-clicking the card to save the image.')
     } finally {
