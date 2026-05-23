@@ -44,8 +44,14 @@ export function SkyReading({ entry, onNewSky }: SkyReadingProps) {
         scale: 3,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#ffffff',
+        backgroundColor: null,
         logging: false,
+        x: 0,
+        y: 0,
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: cardRef.current.scrollWidth,
+        windowHeight: cardRef.current.scrollHeight,
       })
       const dataUrl = canvas.toDataURL('image/jpeg', 0.93)
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
