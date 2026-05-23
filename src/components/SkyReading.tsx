@@ -175,15 +175,23 @@ export function SkyReading({ entry, onNewSky }: SkyReadingProps) {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label className="label-caps text-[10px]">Swatches ({entry.palette.length} found)</label>
-          <input
-            type="number"
-            min={3}
-            max={entry.palette.length}
-            value={swatchCount}
-            onChange={e => setSwatchCount(Math.min(Math.max(parseInt(e.target.value) || 3, 3), entry.palette.length))}
-            className="input text-sm"
-          />
+          <label className="label-caps text-[10px]">Swatches</label>
+          <div className="flex gap-2 flex-wrap">
+            {Array.from({ length: entry.palette.length - 2 }, (_, i) => i + 3).map(n => (
+              <button
+                key={n}
+                onClick={() => setSwatchCount(n)}
+                className={`text-xs px-3 py-1.5 border transition-all duration-150 ${
+                  swatchCount === n
+                    ? 'bg-charcoal text-cream border-charcoal'
+                    : 'bg-transparent text-muted border-muted/40 hover:border-charcoal hover:text-charcoal'
+                }`}
+                style={{ borderRadius: 2 }}
+              >
+                {n}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
