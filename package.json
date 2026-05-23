@@ -15,7 +15,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
-    "html2canvas": "^1.4.1"
+    "html2canvas": "^1.4.1",
+    "exifreader": "^4.14.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
