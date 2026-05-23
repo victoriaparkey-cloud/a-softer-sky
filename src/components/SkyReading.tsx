@@ -50,11 +50,11 @@ export function SkyReading({ entry, onNewSky }: SkyReadingProps) {
       const dataUrl = canvas.toDataURL('image/jpeg', 0.93)
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
       if (isMobile) {
-        const win = window.open()
-        if (win) {
-          win.document.write('<img src="' + dataUrl + '" style="width:100%;max-width:100%">')
-          win.document.title = 'long press to save'
-        }
+        const img = document.createElement('img')
+        img.src = dataUrl
+        img.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;object-fit:contain;background:#000;z-index:9999'
+        img.onclick = () => document.body.removeChild(img)
+        document.body.appendChild(img)
       } else {
         const link = document.createElement('a')
         const slug = (location || 'sky').replace(/\s+/g, '-').toLowerCase()
