@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #FAF7F2;
+    --charcoal: #1C1C1E;
+    --muted: #8A8682;
+    --border: rgba(28, 28, 30, 0.1);
+    --border-mid: rgba(28, 28, 30, 0.2);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans font-light;
+    min-height: 100dvh;
+  }
+
+  /* Selection colour */
+  ::selection {
+    background: rgba(200, 155, 100, 0.2);
+    color: var(--charcoal);
+  }
+
+  /* Thin scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 2px; }
+}
+
+@layer components {
+  /* ── Typography ─────────────────────────────── */
+  .display {
+    @apply font-serif text-4xl font-normal leading-tight tracking-tight;
+  }
+
+  .heading {
+    @apply font-serif text-2xl font-normal leading-tight tracking-tight;
+  }
+
+  .label-caps {
+    @apply text-xs font-normal tracking-caps uppercase text-muted;
+  }
+
+  /* ── Buttons ────────────────────────────────── */
+  .btn-primary {
+    @apply bg-charcoal text-cream text-xs tracking-caps uppercase
+           px-6 py-3 rounded-none
+           transition-opacity duration-200 hover:opacity-75
+           font-sans font-normal;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-muted text-xs tracking-caps uppercase
+           px-6 py-3 rounded-none
+           border border-muted/40
+           transition-all duration-200
+           hover:border-charcoal hover:text-charcoal
+           font-sans font-normal;
+  }
+
+  .btn-text {
+    @apply text-xs tracking-caps uppercase text-muted
+           underline underline-offset-4
+           hover:text-charcoal transition-colors duration-200
+           bg-none border-none cursor-pointer font-sans font-normal;
+  }
+
+  /* ── Cards ──────────────────────────────────── */
+  .card {
+    @apply bg-cream border border-black/[0.06];
+  }
+
+  /* ── Input ──────────────────────────────────── */
+  .input {
+    @apply w-full bg-transparent border-b border-black/20 
+           py-2 text-sm font-light text-charcoal
+           placeholder:text-muted/60
+           focus:outline-none focus:border-charcoal
+           transition-colors duration-200;
+  }
+
+  /* ── Palette strip ──────────────────────────── */
+  .palette-strip {
+    @apply flex h-1.5 overflow-hidden;
+  }
+
+  .palette-strip span {
+    @apply flex-1;
+  }
+
+  /* ── Loading bar ────────────────────────────── */
+  .loading-bar {
+    @apply relative h-px w-12 bg-black/10 overflow-hidden mx-auto;
+  }
+
+  .loading-bar::after {
+    content: '';
+    @apply absolute inset-0 bg-charcoal;
+    animation: shimmer 1.4s ease-in-out infinite;
+  }
+
+  /* ── Drop zone ──────────────────────────────── */
+  .drop-zone {
+    @apply border border-dashed border-charcoal/20 
+           cursor-pointer
+           transition-all duration-200
+           hover:border-charcoal/40 hover:bg-black/[0.02];
+  }
+
+  .drop-zone.active {
+    @apply border-charcoal/50 bg-black/[0.03];
+  }
+}
+
+/* ── Page transitions ──────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#FAF7F2"/>
+  <!-- Minimal sky gradient bars -->
+  <rect x="4" y="10" width="24" height="4" fill="#2E3A5C" opacity="0.8"/>
+  <rect x="4" y="15" width="24" height="4" fill="#E8844A" opacity="0.8"/>
+  <rect x="4" y="20" width="24" height="4" fill="#FAD49A" opacity="0.8"/>
+</svg>
