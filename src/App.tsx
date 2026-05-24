@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { Nav } from './components/Nav'
 import { UploadPage } from './pages/UploadPage'
 
@@ -42,6 +43,7 @@ export function App() {
           <a href="https://instagram.com/a_softer_sky" target="_blank" rel="noopener noreferrer" className="text-xs text-muted hover:text-charcoal transition-colors duration-200 no-underline">@a_softer_sky</a>
         </footer>
       </div>
+      <Analytics />
     </BrowserRouter>
   )
 }
